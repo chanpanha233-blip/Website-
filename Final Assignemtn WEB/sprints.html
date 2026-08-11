@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sprints — Flowdesk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --bg:        #F5F3FB;
+    --bg-2:      #EFEBFA;
+    --card:      #FFFFFF;
+    --ink:       #2B2740;
+    --muted:     #8B87A3;
+    --line:      #E7E2F5;
+
+    --blue:      #6E8FE8;
+    --blue-soft: #A9C6FF;
+    --purple:    #A96FE0;
+    --purple-soft:#C9A9EF;
+    --pink:      #F17FA8;
+    --pink-soft: #FFC9E0;
+    --mint:      #3FB88F;
+    --mint-soft: #AEEBD4;
+    --amber:     #E0A230;
+    --amber-soft:#FFE1A8;
+  }
+
+  *{ box-sizing: border-box; margin: 0; padding: 0; }
+
+  body{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ============ SIDEBAR ============ */
+  .sidebar{
+    width: 250px; flex-shrink: 0; padding: 28px 20px;
+    border-right: 1px solid var(--line); background: var(--bg-2);
+  }
+  .brand{ display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
+  .brand-mark{
+    width: 38px; height: 38px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--blue-soft), var(--purple-soft));
+    color: #fff; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .brand-name{ font-size: 18px; font-weight: 800; }
+  .brand-sub{ font-size: 11px; color: var(--muted); font-weight: 600; }
+  .nav-label{
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--muted); font-weight: 700; margin: 20px 10px 8px;
+  }
+  .nav-label:first-of-type{ margin-top: 0; }
+  .nav-item{
+    display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+    border-radius: 10px; color: var(--muted); font-size: 14px; font-weight: 600;
+    text-decoration: none;
+  }
+  .nav-item.active{
+    background: linear-gradient(120deg, var(--blue-soft), var(--purple-soft));
+    color: #fff;
+  }
+  .nav-item .badge{
+    margin-left: auto; font-size: 11px; font-weight: 700;
+    padding: 2px 8px; border-radius: 20px;
+    background: var(--mint-soft); color: #1a5c46;
+  }
+  .nav-item.active .badge{ background: rgba(255,255,255,0.35); color: #fff; }
+
+  /* ============ MAIN ============ */
+  main{ flex: 1; padding: 28px 36px 48px; max-width: 1200px; }
+  .topbar{ display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
+  .search{
+    flex: 1; max-width: 400px; background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 10px 16px; color: var(--muted); font-size: 14px;
+  }
+  .avatar{
+    margin-left: auto; width: 38px; height: 38px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--amber-soft), var(--pink-soft));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 13px; color: #6b3f1a;
+  }
+  .page-head{ margin-bottom: 22px; }
+  .page-title{ font-family: 'Fraunces', serif; font-weight: 600; font-size: 26px; }
+  .page-sub{ color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+  /* ============ SPRINT CARDS ============ */
+  .sprint-card{
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 18px; padding: 22px; margin-bottom: 16px;
+  }
+  .sprint-card.current{ border: 2px solid var(--purple-soft); }
+
+  .sprint-top{
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 6px; flex-wrap: wrap; gap: 8px;
+  }
+  .sprint-name{ font-weight: 800; font-size: 16px; }
+  .sprint-dates{ font-family: 'JetBrains Mono'; font-size: 12.5px; color: var(--muted); }
+
+  .tag{
+    font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px;
+  }
+  .tag-current{ background: rgba(169,105,224,0.18); color: var(--purple); }
+  .tag-past{ background: rgba(63,184,143,0.18); color: var(--mint); }
+  .tag-upcoming{ background: rgba(169,198,255,0.25); color: var(--blue); }
+
+  .sprint-goal{ color: var(--muted); font-size: 13.5px; margin: 10px 0 16px; }
+
+  .sprint-bottom{ display: flex; align-items: center; gap: 16px; }
+  .progress-track{
+    flex: 1; height: 10px; border-radius: 20px; background: var(--bg-2); overflow: hidden;
+  }
+  .progress-fill{ height: 100%; border-radius: 20px; }
+  .sprint-count{
+    font-family: 'JetBrains Mono'; font-size: 13px; font-weight: 600;
+    color: var(--muted); flex-shrink: 0;
+  }
+
+  @media (max-width: 700px){
+    .sidebar{ display: none; }
+    main{ padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">F</div>
+    <div>
+      <div class="brand-name">Flowdesk</div>
+      <div class="brand-sub">Projects &amp; IT</div>
+    </div>
+  </div>
+
+  <div class="nav-label">Workspace</div>
+  <a class="nav-item" href="flowdesk-simple.html">Dashboard</a>
+  <a class="nav-item" href="project.html">Projects</a>
+  <a class="nav-item" href="tasks.html">Tasks</a>
+  <a class="nav-item active" href="sprints.html">Sprints</a>
+</aside>
+
+<main>
+
+  <div class="topbar">
+    <div class="search">Search sprints...</div>
+    <div class="avatar">PS</div>
+  </div>
+
+  <div class="page-head">
+    <div class="page-title">Sprints</div>
+    <div class="page-sub">Two-week cycles across all teams.</div>
+  </div>
+
+  <div class="sprint-card current">
+    <div class="sprint-top">
+      <div class="sprint-name">Sprint 17</div>
+      <span class="tag tag-current">Current</span>
+    </div>
+    <div class="sprint-dates">Aug 4 – Aug 17</div>
+    <div class="sprint-goal">Goal: finish onboarding redesign and start billing API v2.</div>
+    <div class="sprint-bottom">
+      <div class="progress-track"><div class="progress-fill" style="width:78%; background:var(--purple);"></div></div>
+      <div class="sprint-count">18 / 23 tasks</div>
+    </div>
+  </div>
+
+  <div class="sprint-card">
+    <div class="sprint-top">
+      <div class="sprint-name">Sprint 16</div>
+      <span class="tag tag-past">Completed</span>
+    </div>
+    <div class="sprint-dates">Jul 21 – Aug 3</div>
+    <div class="sprint-goal">Goal: mobile app dark mode and QA pass on checkout.</div>
+    <div class="sprint-bottom">
+      <div class="progress-track"><div class="progress-fill" style="width:94%; background:var(--mint);"></div></div>
+      <div class="sprint-count">22 / 24 tasks</div>
+    </div>
+  </div>
+
+  <div class="sprint-card">
+    <div class="sprint-top">
+      <div class="sprint-name">Sprint 15</div>
+      <span class="tag tag-past">Completed</span>
+    </div>
+    <div class="sprint-dates">Jul 7 – Jul 20</div>
+    <div class="sprint-goal">Goal: security audit access review and cloud migration planning.</div>
+    <div class="sprint-bottom">
+      <div class="progress-track"><div class="progress-fill" style="width:82%; background:var(--mint);"></div></div>
+      <div class="sprint-count">18 / 22 tasks</div>
+    </div>
+  </div>
+
+  <div class="sprint-card">
+    <div class="sprint-top">
+      <div class="sprint-name">Sprint 18</div>
+      <span class="tag tag-upcoming">Upcoming</span>
+    </div>
+    <div class="sprint-dates">Aug 18 – Aug 31</div>
+    <div class="sprint-goal">Goal: continue cloud migration and HR portal wireframes.</div>
+    <div class="sprint-bottom">
+      <div class="progress-track"><div class="progress-fill" style="width:0%; background:var(--blue);"></div></div>
+      <div class="sprint-count">0 / 20 tasks</div>
+    </div>
+  </div>
+
+</main>
+</body>
+</html>
