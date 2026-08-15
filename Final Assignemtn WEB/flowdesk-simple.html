@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flowdesk — Project &amp; IT Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Style.css">
+</head>
+<body>
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">F</div>
+    <div>
+      <div class="brand-name">Dashboard</div>
+      <div class="brand-sub">Projects &amp; IT</div>
+    </div>
+  </div>
+
+  <div class="nav-label">Workspace</div>
+  <a class="nav-item active" href="flowdesk-simple.html">Main</a>
+  <a class="nav-item" href="project.html">Projects</a>
+  <a class="nav-item" href="tasks.html">Tasks</a>
+  <a class="nav-item" href="sprints.html">Sprints</a>
+</aside>
+
+<main>
+
+  <div class="topbar">
+    <div class="search">Search projects, tasks, tickets...</div>
+    <div class="avatar">PS</div>
+  </div>
+
+
+  <section class="stats">
+    <div class="stat-card c1">
+      <div class="stat-label">Active Projects</div>
+      <div class="stat-value">18</div>
+      <div class="stat-delta">▲ 3 new this month</div>
+    </div>
+    <div class="stat-card c2">
+      <div class="stat-label">Tasks Completed</div>
+      <div class="stat-value">1,284</div>
+      <div class="stat-delta">▲ 86% on-time rate</div>
+    </div>
+    <div class="stat-card c3">
+      <div class="stat-label">Open IT Tickets</div>
+      <div class="stat-value">27</div>
+      <div class="stat-delta">▼ 12% vs last week</div>
+    </div>
+    <div class="stat-card c4">
+      <div class="stat-label">System Uptime</div>
+      <div class="stat-value">99.94%</div>
+      <div class="stat-delta">▲ 4 incidents resolved</div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <table>
+      <thead>
+        <tr><th>Item</th><th>Type</th><th>Project / System</th><th>Updated</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="item-name">Redesign onboarding flow</td>
+          <td><span class="tag tag-task">Task</span></td>
+          <td>Atlas Redesign</td>
+          <td class="muted-cell">2h ago</td>
+          <td><span class="status st-progress">In Progress</span></td>
+        </tr>
+        <tr>
+          <td class="item-name">VPN gateway timing out</td>
+          <td><span class="tag tag-ticket">Ticket</span></td>
+          <td>Network</td>
+          <td class="muted-cell">3h ago</td>
+          <td><span class="status st-open">Open</span></td>
+        </tr>
+        <tr>
+          <td class="item-name">Ship v2 billing API</td>
+          <td><span class="tag tag-task">Task</span></td>
+          <td>Core Platform</td>
+          <td class="muted-cell">5h ago</td>
+          <td><span class="status st-review">In Review</span></td>
+        </tr>
+        <tr>
+          <td class="item-name">Replace failing SSD — rack 4</td>
+          <td><span class="tag tag-ticket">Ticket</span></td>
+          <td>Hardware</td>
+          <td class="muted-cell">Yesterday</td>
+          <td><span class="status st-done">Resolved</span></td>
+        </tr>
+        <tr>
+          <td class="item-name">QA regression pass — checkout</td>
+          <td><span class="tag tag-task">Task</span></td>
+          <td>Atlas Redesign</td>
+          <td class="muted-cell">Yesterday</td>
+          <td><span class="status st-done">Completed</span></td>
+        </tr>
+        <tr>
+          <td class="item-name">Reset SSO access for new hires</td>
+          <td><span class="tag tag-ticket">Ticket</span></td>
+          <td>Access</td>
+          <td class="muted-cell">2 days ago</td>
+          <td><span class="status st-progress">In Progress</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>
